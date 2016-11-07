@@ -23,10 +23,9 @@ class mpgHttpsPost:
                         #print ("Request URL is: [" + requestUrl + "]") 
                         #print ("Data to send : " + self.__data)
                         requestObj = urllib2.Request(requestUrl, self.__data)
-                        socket.setdefaulttimeout(self.__timeout)
                         requestObj.add_header("USER-AGENT", self.__agent)
-                        requestObj.add_header("CONTENT-TYPE:", "text/xml")
-                        responsePacket = urllib2.urlopen(requestObj)
+                        requestObj.add_header("CONTENT-TYPE", "text/xml")
+                        responsePacket = urllib2.urlopen(requestObj, timeout=self.__timeout)
                         response = responsePacket.read()
 
                         #print ("******\n Got response of: " + response + "\n******")
